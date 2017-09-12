@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
   template: `
   <div class="container">
     <h1>My First Angular 2 App</h1>
+    <div *ngIf="thing">
+      <h1>Thing is true and therefore it is displayed!</h1>
+    </div>
+    <button (click)="show()">SHOW</button>
+    <button (click)="hide()">HIDE</button>
     <div *ngFor="let currentTask of tasks">
       <h3>{{ currentTask.description }}</h3>
       <button (click)="showDetails(currentTask)">Edit</button>
@@ -26,6 +31,13 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  thing = "something that is not null";
+  show() {
+    this.thing = "not null";
+  }
+  hide() {
+    this.thing = null;
+  }
   public tasks: Task[] = [
       new Task("Create To-Do List app.", 0),
       new Task("Learn Kung Fu.", 1),
