@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './task.model';
 
 @Component({
   selector: 'my-app',
@@ -6,27 +7,19 @@ import { Component } from '@angular/core';
   <div class="container">
     <h1>My First Angular 2 App</h1>
     <div *ngIf="thing">
-      <h2>Thing is true and therefore it is displayed!</h2>
+      <h3>Thing is not relevant... or is it?!</h3>
     </div>
     <button (click)="show()">SHOW</button>
     <button (click)="hide()">HIDE</button>
     <pies></pies>
-    <div *ngFor="let currentTask of tasks">
-      <h3>{{ currentTask.description }}</h3>
-      <button (click)="showDetails(currentTask)">Edit</button>
-    </div>
-    <div *ngIf="selectedTask">
-      <h1>Edit Task</h1>
-      <div>
-        <label>Enter Task Description:</label>
-        <input [(ngModel)]="selectedTask.description">
-      </div>
-      <div>
-        <label>Enter Task ID:</label>
-        <input [(ngModel)]="selectedTask.id">
-        <button (click)="finishedEditing()">Done</button>
-      </div>
-    </div>
+    <task-list
+      [childTaskList]="masterTaskList"
+      (clickSender)="showDetails($event)"
+     ></task-list>
+     <edit-task
+      [childSelectedTask]="selectedTask"
+      (doneClickedSender)="finishedEditing()"
+    ></edit-task>
   </div>
   `
 })
@@ -40,7 +33,7 @@ export class AppComponent {
     this.thing = null;
   }
 
-  public tasks: Task[] = [
+  public masterTaskList: Task[] = [
       new Task("Create To-Do List app.", 0),
       new Task("Learn Kung Fu.", 1),
       new Task("Rewatch all the Lord of the Rings movies.", 2),
@@ -55,10 +48,8 @@ export class AppComponent {
   }
 }
 
-export class Task {
-  public done: boolean = false;
-  constructor(public description: string, public id: number) {   }
-}
+
+
 
 /*{{ }}:moustache tags: they cause any expression/variables inside of the double curly brackets to be evaluatedso that their value is displayed
  task 1: boolean value named done and its default is false
