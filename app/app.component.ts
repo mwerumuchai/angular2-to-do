@@ -57,9 +57,12 @@ export class AppComponent {
 
 
 
-/*{{ }}:moustache tags: they cause any expression/variables inside of the double curly brackets to be evaluatedso that their value is displayed
+/*{{ }}:moustache tags: they cause any expression/variables inside of the double curly brackets to be evaluated so that their value is displayed
  task 1: boolean value named done and its default is false
- task 2: description TASK 3: an Id to assign each task a unique number
- use an output bunding when you want to trigger an event from a DOM element
+ task 2: description
+ TASK 3: an Id to assign each task a unique number
+ use an output binding when you want to trigger an event from a DOM element
  selectedTask is a property
- Two-way Binding allows us to view and modify data in real time : [( ngModel)]*/
+ Two-way Binding allows us to view and modify data in real time : [( ngModel)]
+ show() and hide() are methods
+ */

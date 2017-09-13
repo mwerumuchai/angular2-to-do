@@ -18,3 +18,6 @@ export class TaskListComponent {
     this.clickSender.emit(taskToEdit);
   }
 }
+
+/*
+*/

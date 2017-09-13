@@ -13,3 +13,5 @@ import { Component } from '@angular/core';
 export class PiesListComponent {
   favoritePies: string[] = ["Apple", "Banana Cream", "Blackberry"];
 }
+
+/*ngFor loops through the array (favorite)*/
